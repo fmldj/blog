@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\User;
 use App\Topic;
 // use App\Answer;
+use App\Dynamic;
 use App\Events\QuestionsDelEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -31,11 +32,10 @@ class QuestionsDelEventListener
     public function handle(QuestionsDelEvent $event)
     {
 
-
         $event->question->comments->map(function($value){
             User::find($value->user_id)->decrement('comments_count');//用户表中的评论数减1
         });
-// dd($s);
+
         $event->question->answer->map(function($value){
             User::find($value->user_id)->decrement('answers_count');//用户表中的答案数减1
             $value->vote()->detach();//删除用户所点赞的答案
@@ -45,6 +45,7 @@ class QuestionsDelEventListener
         $event->question->followed()->detach();//删除用户所关注的问题
 
         $event->question->comments()->delete();//删除问题下的所有的评论
+
         $event->question->answer()->delete();//删除问题下的所有的答案
 
         
@@ -58,6 +59,8 @@ class QuestionsDelEventListener
         });
 
         $event->question->topics()->detach();//删除在question_topics表中question_id=$id的数据(问题与主题的关系)
+       
+        Dynamic::where('question_id',$event->question->id)->delete();// 删除当前所属的用户动态
         
 
     }

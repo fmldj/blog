@@ -80,7 +80,7 @@
                                         <div class="social-share" data-initialized="true" style="text-align: center;margin-right: 10px"  data-url="{{ route('questions.show',['id' =>$question->id])}}"  data-title="{{ $question->title }}" data-description="{{ $question->title }}" data-source="djfml">
                                             <a href="#" class="social-share-icon icon-weibo"></a>
                                             <a href="#" class="social-share-icon icon-wechat"></a>
-                                            <a href="#" class="social-share-icon icon-qq"></a>
+                                            <!-- <a href="#" class="social-share-icon icon-qq"></a> -->
                                             <a href="#" class="social-share-icon icon-qzone"></a>
                                             <a href="#" class="social-share-icon icon-douban"></a>
                                         </div>                                    
