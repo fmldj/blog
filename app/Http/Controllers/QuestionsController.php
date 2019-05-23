@@ -29,7 +29,7 @@ class QuestionsController extends BaseController
     public function index()
     {   
         // 通过repository获得数据，使控制器与模型层分离
-        $questions = $this->questionRepository->getAllQuestionData();
+        $questions = $this->questionRepository->all();
 
         // 锁定推荐类型
         $recommend = true;

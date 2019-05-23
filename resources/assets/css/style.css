@@ -803,12 +803,11 @@ img.ui.avatar.image.translator {
 
 #footer {
  
-    border-top: 1px solid #EEE;
     padding: 40px 0;
     color: #888;
     line-height: 1.6;
     /*vertical-align: top;*/
-    background-color: #fff;
+
 }
 #footer .copyright {
     text-align: center;

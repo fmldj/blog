@@ -10,9 +10,9 @@ class QuestionRepository
 {
 
 
-	public function getAllQuestionData()
+	public function all()
 	{
-		$questions = Question::published()->with(['user','likes'])->get();
+		$questions = Question::published()->with(['user','likes'])->orderBy('created_at','DESC')->get();
         $questions->map(function($query){
 
             preg_match( '/<img.*?src=[\"|\']?(.*?)[\"|\']?\s.*?>/i',$query->body,$res);
@@ -36,7 +36,7 @@ class QuestionRepository
 
 	public function getHotData()
 	{
-        $questions = Question::published()->with('user')->orderBy('comment_count')->get();
+        $questions = Question::published()->with('user')->orderBy('look','DESC')->get();
 
         $questions->map(function($query){
             preg_match( '/<img.*?src=[\"|\']?(.*?)[\"|\']?\s.*?>/i',$query->body,$res);
