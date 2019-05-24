@@ -15,7 +15,7 @@
 
             <div class="panel panel-default">
               <div class="panel-body">
-                关于 “{{ $q }}” 的搜索结果，@if(!empty($questions))共 {{ $questions['hits']['total']['value'] }} 条，耗时 {{ round($questions['took']/60,2) }} 秒@endif
+                关于 “<span style="color:red">{{ $q }}</span>” 的搜索结果，@if(!empty($questions))共 {{ $questions['hits']['total']['value'] }} 条，耗时 {{ round($questions['took']/60,2) }} 秒@endif
               </div>
             </div>
 
@@ -36,12 +36,12 @@
                                                 </div>
                                                 <div class="media-body">
                                                     <h4 class="media-heading">
-                                                        <a href="{{ route('questions.show',['id' => $question['_id'] ]) }}">{!! $question['highlight']['question_title'][0] !!}</a>
+                                                        <a href="{{ route('questions.show',['id' => $question['_id'] ]) }}">{{ $question['_source']['question_title'] }}</a>
                                                     </h4>
                                                     <div class="coverContent">
 
                                                         <div class="question-content" style="height: 160px;">
-                                                            <span>{!! $question['highlight']['question_body'][0] !!}</span>
+                                                            <span>{!! $question['highlight']['question_body'][0] !!}...</span>
                                                         </div>    
                                                  
 

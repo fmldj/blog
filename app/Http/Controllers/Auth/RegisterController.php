@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Mail;
 use App\User;
+use App\Jobs\SendMail;
+use Illuminate\Http\Request;
+use Naux\Mail\SendCloudTemplate;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Naux\Mail\SendCloudTemplate;
-use Mail;
-use Illuminate\Http\Request;
-use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -77,7 +78,6 @@ class RegisterController extends Controller
             'api_token' => str_random(60),
         ]);
 
-        $this->sendEmail($user);
 
         return $user;
     }
@@ -94,24 +94,12 @@ class RegisterController extends Controller
 
         event(new Registered($user = $this->create($request->all())));
 
-        flash("注册成功，请先前往{$user->email}邮箱激活")->success()->important();
+        $this->dispatch(new SendMail($user));//异步队列发送邮件
+
+        flash("注册成功，请先前往{$user->email}邮箱激活")->success();
 
         return redirect(route('login'));
     }
-
-
-
-
-
-    protected function sendEmail($user)
-    {
-            $st = new SendCloudTemplate('test_template_active',['url'=>route('email.verify',['token' => $user->token]),'name'=> $user->name]);
-            Mail::raw($st, function ($message) use($user){
-                    $message->from('253811823@qq.com', 'Laravel');
-                    $message->to($user->email);
-            });
-    }
-
 
 
         /**

@@ -13,10 +13,10 @@
 
 
 
-
+Auth::routes();
 Route::get('/', 'QuestionsController@index')->name('questions.index');
 
-Auth::routes();
+
 
 
 
@@ -56,10 +56,11 @@ Route::get('/topic/{topic_id}/question','TopicController@getTopicQuetion')->name
 //搜索页面
 Route::get('/search','SearchController@index')->name('search');
 
+// 邮箱验证
+Route::get('/email-verify','EmailController@verify')->name('email.verify');
 
 Route::middleware('auth')->group(function(){
 
-			Route::get('/email-verify','EmailController@verify')->name('email.verify');
 			// 回答
 			Route::post('/questions/{id}/answer','AnswerController@store')->name('answer.store');
 

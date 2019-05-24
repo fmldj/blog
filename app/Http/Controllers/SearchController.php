@@ -25,7 +25,9 @@ class SearchController extends BaseController
 					    		'query' => [
 					    			'multi_match' => [
 					    				'query' => $q,
-					    				'fields' => ['question_title','question_body'],
+					    				'fields' => ['question_body'],
+					    				// 'type' => 'phrase',
+					    				// 'slop' => 10
 					    			],
 					    		],
 
@@ -39,7 +41,7 @@ class SearchController extends BaseController
 							        "no_match_size" => 1,
 					                'fields' => [
 					                    'question_body' => new stdClass(),
-					                    'question_title' => new stdClass(),
+					                    // 'question_title' => new stdClass(),
 
 
 					                ],
