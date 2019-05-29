@@ -188,6 +188,10 @@ font-size:12px;
 font-size:14px;
 }
 
+.col-md-offset-999{
+     margin-left:4.6666666666666%;
+}
+
 .flex{
     display: flex;
 }

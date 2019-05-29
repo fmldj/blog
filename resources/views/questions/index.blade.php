@@ -11,7 +11,7 @@
 <div class="Topstory-container">
     <div class="Topstory-mainColumn">
         <div class="Card Topstory-noMarginCard Topstory-tabCard">
-            <ul role="tablist" class="Tabs">
+            <ul class="Tabs">
                 <li role="tab" class="Tabs-item Tabs-item--noMeta" aria-controls="Topstory-recommend">
                     <a class="Tabs-link {{ (isset($recommend)&&$recommend=1) ? 'is-active' : '' }}" href="/">推荐</a>
                 </li>
@@ -33,9 +33,9 @@
             <div class="color-white ListShortcut">
 
                 @if($type == 'recommend')
-                <div class="col-md-offset-1 padding-top-30 padding-bottom-30">
+                <div class="col-md-offset-999 padding-top-30 padding-bottom-30">
                     @foreach($questions as $question)
-                        <div class="media padding-bottom-20">
+                        <div class="media padding-bottom-30">
                             <div class="media-left">
                                 <a href="{{ route('people.index',['id' => $question->user->id]) }}">
                                     <img class="border-radis-img" width="36" src="{{$question->user->avatar}}" alt="{{$question->user->name}}">
@@ -43,8 +43,8 @@
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading">
-                                    <a href="{{ route('questions.show',['id' =>$question->id])}}">{{ $question->title }}</a>
-                                    <span class="f_right margin-right-10 font-size-12">{{ formatTime($question->created_at) }}</span>
+                                    <a href="{{ route('questions.show',['id' =>$question->id]) }}">{{ $question->title }}</a>
+                                    <span class="f_right margin-right-20 font-size-12">{{ formatTime($question->created_at) }}</span>
                                 </h4>
                                 <div class="coverContent">
                                         @if($question->cover)
@@ -52,17 +52,13 @@
                                             <img src="{{ $question->cover }}">
                                         </div>
                                         @endif
-
-                                        <div class="question-content">
-                                            <span>{!! $question->body !!}</span>
-
-
+                                        <div class="question-content" style="height: auto;margin-left: 0px;line-height: 30px;">
+                                            <span>{{ $question->desc }}</span>
                                         </div>                                    
 
                                 </div>
-                                <div style="display: flex;">
 
-                                <div style="flex: 1">
+                                <div>
                                     @if(Auth::check() && Auth::user()->id !== $question->user->id || !Auth::check()  )                    
                                         <question-component question="{{ $question->id }}" followers_count="{{ $question->followers_count }}"></question-component>
                                     @endif
@@ -76,19 +72,8 @@
                                         <comment-component class="margin-left-10" type="question" model="{{ $question->id }}" count="{{ $question->comments()->count() }}"></comment-component>
                                 </div>
 
-                                <div>
-                                        <div class="social-share" data-initialized="true" style="text-align: center;margin-right: 10px"  data-url="{{ route('questions.show',['id' =>$question->id])}}"  data-title="{{ $question->title }}" data-description="{{ $question->title }}" data-source="djfml">
-                                            <a href="#" class="social-share-icon icon-weibo"></a>
-                                            <a href="#" class="social-share-icon icon-wechat"></a>
-                                            <!-- <a href="#" class="social-share-icon icon-qq"></a> -->
-                                            <a href="#" class="social-share-icon icon-qzone"></a>
-                                            <a href="#" class="social-share-icon icon-douban"></a>
-                                        </div>                                    
-                                </div>
 
 
-
-                                </div>
 
                             </div>
 
@@ -99,7 +84,7 @@
 
 
                 @if($type == 'follow')
-                <div class="col-md-offset-1 padding-top-30 padding-bottom-30">
+                <div class="col-md-offset-999 padding-top-30 padding-bottom-30">
                     @if(Auth::check())
 
                         @if($is_exist_following_user)
@@ -265,7 +250,7 @@
 
 
                 @if($type == 'hot')
-                <div class="col-md-offset-1 padding-top-30 padding-bottom-30">
+                <div class="col-md-offset-999 padding-top-30 padding-bottom-30">
                     @foreach($questions as $k => $question)
                         <section class="HotItem">
                             <div class="HotItem-index">

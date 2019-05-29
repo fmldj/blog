@@ -178,15 +178,11 @@
                                 <div class="ContentItem-meta">
                                     <div>
                                         <div class="PinItem-author">
-                                            <div class="AuthorInfo PinItem-authorInfo" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-                                                <meta itemprop="name" content="刘校长">
-                                                <meta itemprop="image" content="https://pic1.zhimg.com/50/v2-ad315c3570acaea3f0d08c8424d60faa_s.jpg">
-                                                <meta itemprop="url" content="https://www.zhihu.com/people/liu-ze-hong88">
-                                                <meta itemprop="zhihu:followerCount">
+                                            <div class="AuthorInfo PinItem-authorInfo">
                                                 <span class="UserLink AuthorInfo-avatarWrapper">
                                                     <div class="Popover">
                                                         <div id="Popover6-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover6-content">
-                                                            <a class="UserLink-link" data-za-detail-view-element_name="User" target="_blank" href="//www.zhihu.com/people/liu-ze-hong88">
+                                                            <a class="UserLink-link" data-za-detail-view-element_name="User" target="_blank" href="{{ route('people.index',['id' => $danamic->question->user->id]) }}">
                                                                 <img class="Avatar AuthorInfo-avatar" width="38" height="38" src="{{ $danamic->question->user->avatar }}" alt="刘校长">
                                                             </a>
                                                         </div>
@@ -197,14 +193,15 @@
                                                         <span class="UserLink AuthorInfo-name">
                                                             <div class="Popover">
                                                                 <div id="Popover7-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover7-content">
-                                                                    <a class="UserLink-link" data-za-detail-view-element_name="User" target="_blank" href="//www.zhihu.com/people/liu-ze-hong88">{{ $danamic->question->user->name }}</a>
+                                                                    <a class="UserLink-link" data-za-detail-view-element_name="User" target="_blank" href="{{ route('people.index',['id' => $danamic->question->user->id]) }}">{{ $danamic->question->user->name }}</a>
                                                                 </div>
                                                             </div>
                                                         </span>
                                                     </div>
                                                     <div class="AuthorInfo-detail">
                                                         <div class="AuthorInfo-badge">
-                                                            <div class="ztext AuthorInfo-badgeText">{{ $danamic->question->title }}</div>
+                                                            <div class="ztext AuthorInfo-badgeText">
+                                                                <a href="{{ route('questions.show',['id' => $danamic->question->id]) }}">{{ $danamic->question->title }}</a></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -215,7 +212,7 @@
 
                                 <div class="RichContent">
                                     <div class="RichContent-inner">
-                                        <span class="RichText ztext CopyrightRichText-richText" itemprop="text">{!! $danamic->question->body !!}
+                                        <span class="RichText ztext CopyrightRichText-richText" style="line-height: 30px;" itemprop="text">{{ $danamic->question->desc }}
                                         </span>
                                     </div>
                                     <div>

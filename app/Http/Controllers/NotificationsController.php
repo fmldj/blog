@@ -15,7 +15,6 @@ class NotificationsController extends BaseController
     public function show(DatabaseNotification $notifications_id,Request $request)
     {
 
-
     	$res = $notifications_id->markAsRead();
     	return redirect($request->query('query'));
 

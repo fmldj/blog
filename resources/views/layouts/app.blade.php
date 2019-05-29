@@ -162,28 +162,29 @@
 
         // 订阅私信频道
         Echo.private('message-'+ Zhihu.id).listen('MessageEvent', (e) => {
-                    console.log(e);
-                    var name = '发送者：'+e.from_user_name+'<br/>';
+                    var name = '发送人：'+e.from_user_name+'<br/>';
                     var message = '消息：'+e.message;
                     toastr.success(name + message,"有新消息了，请查收!");
 
                     var n = $('.badge').text();
-                    $('.badge').text(parseInt(n)+1);                    
+                    $('.badge').text(parseInt(n)+1);
 
         });
 
         // 订阅文章推送频道
         Echo.channel('question-send').listen('QuestionSendEvent',(e) => {
-                    console.log(e);
                     var message = '标题：'+e.title;
                     toastr.success(message,'<a style="color:white" href="/questions/'+e.id+'">'+e.from_user+'用户发表了新文章了，赶紧评论吧</a>');
 
         });
 
-        // 用户关注频道
+        // 订阅用户关注频道
         Echo.private('myFollower-'+ Zhihu.id).listen('UserFollowerEvent',(e)=>{
 
             toastr.success('刚刚 '+e.username+'关注了你');
+
+            var n = $('.badge').text();
+            $('.badge').text(parseInt(n)+1);             
 
         });
 

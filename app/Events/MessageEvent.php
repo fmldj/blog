@@ -37,7 +37,7 @@ class MessageEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('message-'.$this->message->id);//私人频道
+        return new PrivateChannel('message-'.$this->message->to_user_id);//私人频道
     }
     public function broadcastWith()
     {

@@ -55,7 +55,9 @@
                             alert('请登录在进行操作');
                             return;
                 }
-                    $('#modal-access-token').modal('show');
+                $('#modal-access-token').modal('show');
+                this.status = false;
+                this.body = '';
             },
             store(){
                 if(window.Zhihu.name == ''){
@@ -70,7 +72,6 @@
                      },2000);
                      
                 },function(){
-                     
                      
                      $('#modal-access-token').modal('hide');
                 });

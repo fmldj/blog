@@ -47745,6 +47745,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return;
             }
             $('#modal-access-token').modal('show');
+            this.status = false;
+            this.body = '';
         },
         store: function store() {
             var _this = this;

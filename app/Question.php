@@ -11,7 +11,8 @@ class Question extends Model
     protected $fillable = [
     	'title',
     	'body',
-    	'user_id'
+    	'user_id',
+        'desc',
 
     ];
 
@@ -64,6 +65,7 @@ class Question extends Model
     {
         return [
             'user_id' => $this->user->id,
+            'desc' => $this->desc,
             'user_name' => $this->user->name,
             'avatar' => $this->user->avatar,
             'comments' => $this->comments()->count(),

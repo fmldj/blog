@@ -52,32 +52,43 @@
             </div>
 
 
-<div class="ui message basic text-center voted-box pt-2">
-                <div class="pt-0">
-                    <div class="ui small horizontal list topic-voted-users" style="font-size:16px;padding-top: 8px;display: flex;">
-                                <div class="item" style="font-size: 15px;margin-right: 12px;font-size: 15px;margin-right: 12px;display: inline-flex;flex-shrink: 0;line-height: 26px;">
-                                    
+            <div class="ui message basic text-center pt-2">
+                            <div class="pt-0">
+                                <div class="ui small horizontal list topic-voted-users" style="font-size:16px;display: flex;">
+                                            <div class="item" style="font-size: 15px;margin-right: 12px;font-size: 15px;margin-right: 12px;display: inline-flex;flex-shrink: 0;line-height: 26px;">
+                                                
 
-                                <a class="item ui topic-vote ui action  rm-link-color text-mute rm-tdu" id="topic-vote-25181" data-id="25181" href="#" title="Vote Up">
-                                    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> <span class="count vote-count">{{ $count }}</span> 人点赞
-                                </a>
+                                            <a class="item ui topic-vote ui action  rm-link-color text-mute rm-tdu" id="topic-vote-25181" data-id="25181" href="#" title="Vote Up">
+                                                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> <span class="count vote-count">{{ $count }}</span> 人点赞
+                                            </a>
 
-                                </div>
-                                <div class="users" style="display: inline-flex;-webkit-box-flex: 1;-webkit-box-flex: 1;-ms-flex-positive: 1;flex-grow: 1;-ms-flex-wrap: wrap;flex-wrap: wrap;overflow: hidden;height: 42px;">
+                                            </div>
+                                            <div class="users" style="display: inline-flex;-webkit-box-flex: 1;-webkit-box-flex: 1;-ms-flex-positive: 1;flex-grow: 1;-ms-flex-wrap: wrap;flex-wrap: wrap;overflow: hidden;height: 42px;">
 
-                                    @foreach($likes as $k => $v)
-                                    <a class="item" style="margin-left: 2px;" href="{{ route('people.index', ['user' => $v[0]]) }}">
-                                        <img class="ui image avatar translator" src="{{ $v[2] }}" style="width: 34px;height: 34px;">
-                                    </a>
-                                    @endforeach
+                                                @foreach($likes as $k => $v)
+                                                <a class="item" style="margin-left: 2px;" href="{{ route('people.index', ['user' => $v[0]]) }}">
+                                                    <img class="ui image avatar translator" src="{{ $v[2] }}" style="width: 34px;height: 34px;">
+                                                </a>
+                                                @endforeach
 
 
-                                </div>
-                </div>                
+                                            </div>
+                            </div>                
+                        </div>
+                                            <div>
+                                                    <div class="social-share" data-initialized="true" style="text-align: center;margin-right: 10px"  data-url="{{ route('questions.show',['id' =>$data->id])}}"  data-title="{{ $data->title }}" data-description="{{ $data->title }}" data-source="djfml">
+                                                        <a href="#" class="social-share-icon icon-weibo"></a>
+                                                        <a href="#" class="social-share-icon icon-wechat"></a>
+                                                        <a href="#" class="social-share-icon icon-qq"></a>
+                                                        <a href="#" class="social-share-icon icon-qzone"></a>
+                                                        <a href="#" class="social-share-icon icon-douban"></a>
+                                                    </div>                                    
+                                            </div>
+
+
+
+
             </div>
-
-</div>
-
 
 
 

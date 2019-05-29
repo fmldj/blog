@@ -173,6 +173,7 @@ class QuestionsController extends BaseController
 
 
 
+    // 内容详情页
     public function show($id)
     {
 
@@ -181,15 +182,15 @@ class QuestionsController extends BaseController
 
         $like_user = Redis::smembers('question:'.$id);
         $count = Redis::get('like_count'.$id);
+        $count = $count ? $count : 0 ;
         $likes = array();
         if(!empty($like_user)){
             foreach ($like_user as $k => $v) {
                     $likes[] = Redis::hmget('question_user_like_'.$id.'_'.$v, 'user_id','user_name','user_avatar');
-                    // $likes[]
+
             }
         }
 
-        // dd($likes);
         return view('questions.show',compact('data','likes','count'));
 
     }

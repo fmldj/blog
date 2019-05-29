@@ -8815,6 +8815,10 @@ a:hover {
   font-size: 14px;
 }
 
+.col-md-offset-999 {
+  margin-left: 4.6666666666666%;
+}
+
 .flex {
   display: -webkit-box;
   display: -ms-flexbox;

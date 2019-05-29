@@ -25,6 +25,7 @@ class QuestionRequest extends FormRequest
     {
         return [
             'title' => 'required|max:255',
+            'desc' => 'required|max:255',
             'body' => 'required',
 
         ];
@@ -36,7 +37,9 @@ class QuestionRequest extends FormRequest
             'title.max' => '标题名字过长',
             'title.required' => '标题名字不能为空',
             'body.required' => '内容不能为空',
-            'user_id.required' => '请登录'
+            'user_id.required' => '请登录',
+            'desc.required' => '描述不能为空',
+            'desc.max' => '描述内容过长',
         ];
     }
 }

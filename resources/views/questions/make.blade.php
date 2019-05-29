@@ -7,7 +7,6 @@
 @stop
 
 @section('content')
-@include('vendor.ueditor.assets')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <div class="container">
     <div class="row">
@@ -28,8 +27,19 @@
                                  @endif                                    
                                 </div>
 
+                                <div class="form-group {{$errors->has('desc') ? 'has-error' : ''}}">
+                                    <label for="desc">描述</label>
+                                    <textarea class="form-control" name="desc"></textarea>
+                                @if($errors->has('desc'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('desc') }}</strong>
+                                    </span>
+                                @endif
+
+                                </div>
+
                                 <div class="form-group {{$errors->has('body')?'has-error':''}}">
-                                 <label for="title">描述</label>
+                                 <label for="title">内容</label>
                                  <script id="container" style="height:200px" name="body" type="text/plain">{{old('body')}}</script>
                                  @if ($errors->has('body'))
                                     <span class="help-block">
@@ -60,6 +70,11 @@
 
 
 
+
+
+@section('scripts')
+@include('vendor.ueditor.assets')
+
 <!-- 实例化编辑器 -->
 <script type="text/javascript">
 var ue = UE.getEditor('container', {
@@ -75,7 +90,6 @@ var ue = UE.getEditor('container', {
 });
 </script>
 
-@section('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -159,13 +173,15 @@ $(".js-example-basic-multiple").select2({
             url:"{{ route('questions.store') }}",
             data:$('form').serialize(),
             success:function(e){
+                console.log(e);
                 // alert('发表成功');
                 toastr.success('发表成功');
                 setTimeout(function(){
                         window.location.reload();
                 },3000);
                 
-            }
+            },
+
 
         });
 

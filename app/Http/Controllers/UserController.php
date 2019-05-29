@@ -73,7 +73,9 @@ class UserController extends BaseController
     // 用户主页
     public function index(User $user)
     {
-        $dynamics = Dynamic::where('user_id',authId())->orderBy('created_at','DESC')->get();
+
+        // $dynamics = Dynamic::where('user_id',authId())->orderBy('created_at','DESC')->get();
+        $dynamics = Dynamic::where('user_id',$user->id)->orderBy('created_at','DESC')->get();
         // dd($dynamics[52]->question);
         return view('user.index',compact('user','dynamics'));
     }

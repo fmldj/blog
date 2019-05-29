@@ -61,6 +61,7 @@ class QuestionRepository
     	$question = Question::create([
     		'title' => $request->get('title'),
     		'body' => $request->get('body'),
+            'desc' => $request->get('desc'),
     		'user_id' => Auth::id(),
     	]);
     	return $question;		
@@ -74,7 +75,7 @@ class QuestionRepository
 
             'title' => $request->title,
             'body' => $request->body,
-
+            'desc' => $request->desc,
         ]);
 
         return compact('question','res');
