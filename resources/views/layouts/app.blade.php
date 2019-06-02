@@ -135,7 +135,7 @@
             <div class="copyright">
                 Copyright © 2018-2019 <a href="/">www.djfml6.com</a>. 当前呈现版本 19-4-20<br>
                 <a href="https://www.djfml6.com/" rel="nofollow">粤ICP备 18020076号</a> &nbsp;
-                <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602002000" rel="nofollow">邮箱</a>
+                <a target="_blank">邮箱</a>
                 <span class="ml5">18565854805@163.com</span>
 <!--                 <p class="mt30">CDN 存储服务由 <a target="_blank" href="https://www.upyun.com/?utm_source=segmentfault&amp;utm_medium=link&amp;utm_campaign=upyun&amp;md=segmentfault">又拍云</a> 赞助提供 </p> -->
             </div>

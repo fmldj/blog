@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
-use App\Follow;
 use App\User;
+use App\Follow;
 use App\Dynamic;
+use Illuminate\Http\Request;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,17 @@ use App\Dynamic;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+
+Route::post('/login','ApiController\v1\JwtController@login');
+
+Route::group(['middleware' => 'jwt.auths', 'namespace' => 'ApiController\v1', 'prefix' => 'v1'], function(){
+		Route::get('/getuser','JwtController@getuser');
+		Route::get('/show/{id}','QuestionController@show');
+
+});
+
+
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

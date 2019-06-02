@@ -45,6 +45,10 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+        'jwt_api' => [
+            'driver' => 'jwt',
+            'provider' => 'jwt_users',
+        ],
     ],
 
     /*
@@ -68,6 +72,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+        'jwt_users' => [
+            'driver' => 'eloquent',
+            'model' => App\JwtUser::class,
+            
         ],
 
         // 'users' => [
