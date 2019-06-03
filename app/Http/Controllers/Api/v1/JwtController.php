@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\v1\Controllers;
+namespace App\Http\Controllers\Api\v1;
 
 use Auth;
 use JWTAuth;

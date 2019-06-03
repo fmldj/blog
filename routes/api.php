@@ -20,9 +20,9 @@ use Illuminate\Http\Request;
 */
 
 
-Route::post('login','Api\v1\Controllers\JwtController@login');
+Route::post('login','Api\v1\JwtController@login');
 
-Route::group(['middleware' => 'jwt.auths', 'namespace' => 'Api\v1\Controllers', 'prefix' => 'v1'], function(){
+Route::group(['middleware' => 'jwt.auths', 'namespace' => 'Api\v1', 'prefix' => 'v1'], function(){
 		Route::get('getuser','JwtController@getuser');
 		Route::get('question/{id}','QuestionController@show');
 		Route::get('questions','QuestionController@index');

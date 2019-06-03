@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Api\v1\Controllers;
+namespace App\Http\Controllers\Api\v1;
 
 use App\Model\Question;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Api\Response\ApiResponse;
 
 class QuestionController extends Controller
 {
+    use ApiResponse;
     public function show(Request $request)
     {
     	echo $request->input('id');
@@ -16,7 +18,8 @@ class QuestionController extends Controller
     public function index()
     {
 		$data = Question::all();
-		dd($data);
-		// return response()->json(['res' => $data]);
+        // 3/0;
+        return $this->success($data);
+
     }
 }
