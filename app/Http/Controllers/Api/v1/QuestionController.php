@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Model\Question;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Api\Response\ApiResponse;
+use App\Http\Controllers\Controller;
+use App\Exceptions\EmptyException;
+
 
 class QuestionController extends Controller
 {
@@ -18,7 +20,14 @@ class QuestionController extends Controller
     public function index()
     {
 		$data = Question::all();
-        // 3/0;
+
+        if(!$data){
+            throw new EmptyException('数据不存在',400);
+        }
+
+
+
+
         return $this->success($data);
 
     }
