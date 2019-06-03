@@ -1,5 +1,5 @@
 <?php
-use App\Message;
+use App\Model\Message;
 use Illuminate\Support\Facades\Auth;
 
 // 计算几分钟前、几小时前、几天前

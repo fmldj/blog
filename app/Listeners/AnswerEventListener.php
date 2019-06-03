@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use Auth;
-use App\Dynamic;
+use App\Model\Dynamic;
 use App\Events\AnswerEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;

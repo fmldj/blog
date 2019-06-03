@@ -3,8 +3,8 @@ namespace App\Repositories;
 
 use Auth;
 use Redis;
-use App\Topic;
-use App\Question;
+use App\Model\Topic;
+use App\Model\Question;
 
 class QuestionRepository
 {

@@ -2,8 +2,8 @@
 
 namespace App\Listeners;
 
-use App\Topic;
-use App\Dynamic;
+use App\Model\Topic;
+use App\Model\Dynamic;
 use App\Events\TopicEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;

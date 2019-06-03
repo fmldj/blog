@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use stdClass;
-use App\Question;
+use App\Model\Question;
 use Illuminate\Http\Request;
 use Elasticsearch\ClientBuilder;
 

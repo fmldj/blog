@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Dynamic;
+use App\Model\User;
+use App\Model\Dynamic;
 use Illuminate\Http\Request;
 use App\Http\Requests\PasswordRequest;
 

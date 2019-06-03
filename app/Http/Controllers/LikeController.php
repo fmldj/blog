@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use Redis;
-use App\Question;
+use App\Model\Question;
 use Illuminate\Http\Request;
 
 class LikeController extends BaseController

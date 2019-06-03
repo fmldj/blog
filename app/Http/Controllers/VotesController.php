@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Answer;
+use App\Model\User;
+use App\Model\Answer;
 use Illuminate\Http\Request;
 
 class VotesController extends BaseController

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use Mail;
-use App\User;
+use App\Model\User;
 use App\Jobs\SendMail;
 use Illuminate\Http\Request;
 use Naux\Mail\SendCloudTemplate;

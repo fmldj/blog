@@ -2,7 +2,7 @@
 
 use Illuminate\Foundation\Inspiring;
 use App\Events\testEvent;
-use App\Question;
+use App\Model\Question;
 
 /*
 |--------------------------------------------------------------------------

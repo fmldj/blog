@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Answer;
+use App\Model\Answer;
 use App\Events\AnswerEvent;
 use Illuminate\Http\Request;
 use App\Http\Requests\AnswerRequest;

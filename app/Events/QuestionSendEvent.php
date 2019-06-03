@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Question;
+use App\Model\Question;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;

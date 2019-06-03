@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Topic;
-use App\User;
-use App\Dynamic;
+use App\Model\User;
+use App\Model\Topic;
+use App\Model\Dynamic;
 use Illuminate\Http\Request;
 use App\Repositories\TopicRepository;
 use App\Events\TopicEvent;

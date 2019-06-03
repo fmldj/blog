@@ -2,9 +2,9 @@
 namespace App\Repositories;
 
 use Auth;
-use App\Answer;
-use App\Comment;
-use App\Question;
+use App\Model\Answer;
+use App\Model\Comment;
+use App\Model\Question;
 
 class CommentRepository
 {
@@ -58,7 +58,7 @@ class CommentRepository
 
     public function getTypeModel($type)
     {	
-    	return $type == 'question' ? 'App\Question' : 'App\Answer';
+    	return $type == 'question' ? 'App\Model\Question' : 'App\Model\Answer';
     }
 
 

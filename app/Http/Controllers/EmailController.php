@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\User;
+use App\Model\User;
 use Illuminate\Http\Request;
 
 class EmailController extends BaseController

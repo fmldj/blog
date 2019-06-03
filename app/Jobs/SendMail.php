@@ -3,7 +3,7 @@
 namespace App\Jobs;
 
 use Mail;
-use App\User;
+use App\Model\User;
 use Illuminate\Bus\Queueable;
 use Naux\Mail\SendCloudTemplate;
 use Illuminate\Queue\SerializesModels;

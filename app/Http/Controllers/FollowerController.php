@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\User;
+use App\Model\User;
 use Illuminate\Http\Request;
 use App\Events\UserFollowerEvent;
 

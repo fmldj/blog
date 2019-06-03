@@ -1,8 +1,10 @@
 <?php
 
-use App\User;
-use App\Follow;
-use App\Dynamic;
+use App\Model\User;
+use App\Model\Follow;
+use App\Model\Dynamic;
+use App\Model\Question;
+use App\Model\Topic;
 use Illuminate\Http\Request;
 
 
@@ -18,11 +20,12 @@ use Illuminate\Http\Request;
 */
 
 
-Route::post('/login','ApiController\v1\JwtController@login');
+Route::post('login','Api\v1\Controllers\JwtController@login');
 
-Route::group(['middleware' => 'jwt.auths', 'namespace' => 'ApiController\v1', 'prefix' => 'v1'], function(){
-		Route::get('/getuser','JwtController@getuser');
-		Route::get('/show/{id}','QuestionController@show');
+Route::group(['middleware' => 'jwt.auths', 'namespace' => 'Api\v1\Controllers', 'prefix' => 'v1'], function(){
+		Route::get('getuser','JwtController@getuser');
+		Route::get('question/{id}','QuestionController@show');
+		Route::get('questions','QuestionController@index');
 
 });
 
@@ -33,14 +36,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/topics',function(Request $request){
+Route::get('topics',function(Request $request){
 	$q = $request->input('q');
-	return \App\Topic::where('name','like','%'.$q.'%')->get();
+	return Topic::where('name','like','%'.$q.'%')->get();
 });
 
 
 // 初始化(用户关注问题)
-Route::post('/question/followed',function(Request $request){
+Route::post('question/followed',function(Request $request){
 
 	$user = \Auth::guard('api')->user();
 	$res = $user->followed($request->get('question_id'));
@@ -49,11 +52,11 @@ Route::post('/question/followed',function(Request $request){
 })->middleware('auth:api');
 
 // 用户关注问题
-Route::post('/question/follow',function(Request $request){
+Route::post('question/follow',function(Request $request){
 
 
 	$user = \Auth::guard('api')->user();
-	$question = \App\Question::find($request->get('question_id'));
+	$question = Question::find($request->get('question_id'));
 
 	$res = $user->followThis($question->id);
 
@@ -83,34 +86,34 @@ Route::post('/question/follow',function(Request $request){
 })->middleware('auth:api');
 
 // 关注用户
-Route::get('/follower/index/{id}','FollowerController@index')->middleware('auth:api');
-Route::post('/follower','FollowerController@follower')->middleware('auth:api');
+Route::get('follower/index/{id}','FollowerController@index')->middleware('auth:api');
+Route::post('follower','FollowerController@follower')->middleware('auth:api');
 
 
 // 检测该用户是否对某个评论已经点赞了
-Route::get('/answer/index/{id}','VotesController@index')->name('user.index');
-Route::post('/answer/vote','VotesController@vote')->name('user.vote');
+Route::get('answer/index/{id}','VotesController@index')->name('user.index');
+Route::post('answer/vote','VotesController@vote')->name('user.vote');
 
 
 // 站内私信
-Route::post('/send/messages','MessagesController@send')->name('send.message');
+Route::post('send/messages','MessagesController@send')->name('send.message');
 
 
 // 对于答案的评论
-Route::get('/answer/{id}/comments','CommentController@answer')->name('answer.comments');
+Route::get('answer/{id}/comments','CommentController@answer')->name('answer.comments');
 
 // 对于问题的评论
-Route::get('/question/{id}/comments','CommentController@question')->name('answer.question');
+Route::get('question/{id}/comments','CommentController@question')->name('answer.question');
 
 // 提交评论
-Route::post('/comment','CommentController@store')->name('comment.store');
+Route::post('comment','CommentController@store')->name('comment.store');
 
 // 多级回复
 Route::post('/comment/pl','CommentController@pl')->name('comment.pl');
 
 
 // 用户关注某个话题
-Route::post('/topic/following','TopicController@following')->name('topic.following');
+Route::post('topic/following','TopicController@following')->name('topic.following');
 
 // 点赞
-Route::post('/like','LikeController@store')->name('like');
+Route::post('like','LikeController@store')->name('like');

@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 
 use Auth;
-use App\User;
-use App\Message;
-use App\Question;
+use App\Model\User;
+use App\Model\Message;
+use App\Model\Question;
 use Illuminate\Http\Request;
 use App\Events\MessageEvent;
 use App\Repositories\MessageRepository;

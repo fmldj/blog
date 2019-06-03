@@ -102,6 +102,8 @@ return [
 
     'ttl' => env('JWT_TTL', 60),
 
+    'user' => 'App\Model\JwtUser',
+
     /*
     |--------------------------------------------------------------------------
     | Refresh time to live

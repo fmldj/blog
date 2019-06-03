@@ -3,10 +3,10 @@
 namespace App\Listeners;
 
 use Auth;
-use App\Answer;
-use App\Dynamic;
-use App\Comment;
-use App\Question;
+use App\Model\Answer;
+use App\Model\Dynamic;
+use App\Model\Comment;
+use App\Model\Question;
 use App\Events\CommentEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;

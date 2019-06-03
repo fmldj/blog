@@ -1,7 +1,7 @@
 <?php
 namespace App\Repositories;
 
-use App\Topic;
+use App\Model\Topic;
 
 /**
  * 

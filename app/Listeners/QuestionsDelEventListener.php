@@ -2,10 +2,10 @@
 
 namespace App\Listeners;
 
-use App\User;
-use App\Topic;
-// use App\Answer;
-use App\Dynamic;
+use App\Model\User;
+use App\Model\Topic;
+// use App\Model\Answer;
+use App\Model\Dynamic;
 use App\Events\QuestionsDelEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;

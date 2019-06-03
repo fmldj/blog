@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Redis;
-use App\User;
-use App\Question;
+use App\Model\User;
+use App\Model\Question;
 use Illuminate\Http\Request;
 use App\Events\QuestionsEvent;
 use App\Events\QuestionSendEvent;
@@ -28,13 +28,13 @@ class QuestionsController extends BaseController
     // 知乎首页
     public function index()
     {   
+
         // 通过repository获得数据，使控制器与模型层分离
         $questions = $this->questionRepository->all();
 
         // 锁定推荐类型
         $recommend = true;
         $type = 'recommend';
-
 
         return view('questions.index', compact('questions','recommend','type'));
 

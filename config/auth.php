@@ -71,11 +71,11 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Model\User::class,
         ],
         'jwt_users' => [
             'driver' => 'eloquent',
-            'model' => App\JwtUser::class,
+            'model' => App\Model\JwtUser::class,
             
         ],
 
