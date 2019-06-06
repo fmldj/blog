@@ -13,8 +13,6 @@ class Question extends Model
     	'title',
     	'body',
     	'user_id',
-        'desc',
-
     ];
 
     public function topics()

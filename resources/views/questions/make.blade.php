@@ -27,16 +27,6 @@
                                  @endif                                    
                                 </div>
 
-                                <div class="form-group {{$errors->has('desc') ? 'has-error' : ''}}">
-                                    <label for="desc">描述</label>
-                                    <textarea class="form-control" name="desc"></textarea>
-                                @if($errors->has('desc'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('desc') }}</strong>
-                                    </span>
-                                @endif
-
-                                </div>
 
                                 <div class="form-group {{$errors->has('body')?'has-error':''}}">
                                  <label for="title">内容</label>

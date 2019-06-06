@@ -3,7 +3,10 @@
 namespace App\Exceptions;
 
 use Exception;
+use ErrorException;
+use InvalidArgumentException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
 class Handler extends ExceptionHandler
@@ -50,9 +53,24 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+    	if($exception instanceof NotFoundHttpException)
+    	{	
+    		$message = $exception->getMessage()?$exception->getMessage():'页面内容不存在';
+    		$code = $exception->getCode()?$exception->getCode():404;
+    		return response()->json(['code' => $code, 'message' => $message], $code);
+    	}
+
+    	if($exception instanceof InvalidArgumentException){
+    		$message = $exception->getMessage()?$exception->getMessage():'无效参数';
+    		$code = $exception->getCode()?$exception->getCode():404;
+    		return response()->json(['code' => $code, 'message' => $message], $code);
+    	}
     	// if($exception instanceof ErrorException){
-    	// 	return response('抱歉，未找到数据！', 404);
+    	// 	$message = $exception->getMessage()?$exception->getMessage():'错误参数';
+    	// 	$code = $exception->getCode()?$exception->getCode():404;
+    	// 	return response()->json(['code' => $code, 'message' => $message], $code);
     	// }
+
         return parent::render($request, $exception);
     }
 }

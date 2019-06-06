@@ -17,7 +17,6 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
-
     <script>
         @if(Auth::check())
             window.Zhihu = {
@@ -56,7 +55,7 @@
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
                         <!-- {{ config('app.name', 'Laravel') }} -->
-                        <span style="color: black;font-weight: 700">Disco</span><span style="color: #2ab27b;font-weight: 700">very</span>
+                        <span style="color: white;font-weight: 700">Disco</span><span style="color: #2ab27b;font-weight: 700">very</span>
                     </a>
                 </div>
 
@@ -87,8 +86,8 @@
                             <li class="dropdown">
                                 
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    <span class="badge" style="background-color: #c5464a;"> {{ getUnReadCount() }} </span>
-                                    <img class="border-radis-img" style="width: 30px;height: 30px;" src="{{ Auth::user()->avatar }}">
+                                    <span class="badge" style="background-color: #c5464a;margin-right: 10px;"> {{ getUnReadCount() }} </span>
+                                    <img class="border-radis-img" style="width: 35px;height: 35px;" src="{{ Auth::user()->avatar }}">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 

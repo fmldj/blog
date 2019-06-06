@@ -26,7 +26,7 @@
         },
         computed:{
             text(){
-                return this.counts
+                return this.counts+' 赞'
             }
         },
         methods:{

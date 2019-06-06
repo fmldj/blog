@@ -13,6 +13,9 @@ class EmptyException extends Exception
 
     public function render()
     {
+
     	return response()->json(['code' => $this->code, 'mesage' => $this->message], $this->code);
     }
+
+
 }

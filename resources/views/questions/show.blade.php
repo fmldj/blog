@@ -111,8 +111,8 @@
                 </div>
                 <div class="panel-body question-follow">
 
-                	@if(Auth::check() && Auth::user()->id !== $data->user_id || !Auth::check())
-	                    <question-component question="{{ $data->id }}" followers_count="{{ $data->followers_count }}"></question-component>                
+                    @if(Auth::check() && Auth::user()->id !== $data->user_id || !Auth::check())
+                        <question-component question="{{ $data->id }}" followers_count="{{ $data->followers_count }}"></question-component>                
                     @endif
 
 
@@ -138,11 +138,14 @@
                             @foreach($data->answer as $answer)
 
                                 <div class="media">
-
                                     <div class="media-left">
-                                        <user-vote-component answer="{{ $answer->id }}" count="{{ $answer->votes_count }}"></user-vote-component>
-                                    </div>
+                                        <div class="answer-info-panel">
+                                            <div class="answer-info-avatar">
+                                                <img src="{{ $answer->user->avatar }}">
+                                            </div> 
+                                        </div>
 
+                                    </div>
                                     <div class="media-body">
                                         <h4 class="media-heading">
                                             <a href="{{ route('people.index',['user' =>$answer->user_id])}}">{{$answer->user->name}}</a>
@@ -152,38 +155,17 @@
                                         </div>
                                         
                                     </div>
-
+<div class="update-time">回答于： {{ $data->updated_at }}</div>
                                     <div class="actions">
+                                        <user-vote-component answer="{{ $answer->id }}" count="{{ $answer->votes_count }}" style="margin-right: 20px;"></user-vote-component>
                                         <comment-component type="answer" model="{{ $answer->id }}" count="{{ $answer->comments()->count() }}">
                                         </comment-component>
-                                        <div class="update-time">回答于： {{ $data->updated_at }}</div> 
+                                         
                                     </div>
 
                                 </div>
                             @endforeach
 
-                            @if(Auth::check())
-                                <a href="#5F"></a>
-                                <form style="margin-top: 30px;" action="{{ route('answer.store',['id' => $data->id]) }}" method="post">
-
-                                    {!! csrf_field() !!}
-
-                                    <div class="form-group {{$errors->has('body')?'has-error':''}}">
-                                     <script id="container" style="height:200px" name="body" type="text/plain"></script>
-                                     @if ($errors->has('body'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('body') }}</strong>
-                                        </span>
-                                     @endif                                    
-
-                                    </div>
-
-
-                                    <button class="btn btn-success pull-right" type="submit">提交答案</button>
-                                </form>
-                            @else
-                                <a style="margin-top: 30px;" href="{{ route('login') }}" class="btn btn-success btn-block">登录提交答案</a>
-                            @endif 
 
 
                 </div>                 
@@ -230,10 +212,10 @@
                         </div>
 
                     </div>
-                    		@if(Auth::check() && Auth::user()->id !== $data->user_id || !Auth::check())
-		                            <user-follower-component user_id="{{ $data->user_id }}"></user-follower-component>
-		                            <send-message-component user_id="{{ $data->user_id }}"></send-message-component>                    
-                    		@endif
+                            @if(Auth::check() && Auth::user()->id !== $data->user_id || !Auth::check())
+                                    <user-follower-component user_id="{{ $data->user_id }}"></user-follower-component>
+                                    <send-message-component user_id="{{ $data->user_id }}"></send-message-component>                    
+                            @endif
 
 
                 </div>
@@ -241,7 +223,46 @@
             </div>
         </div>
 
+        <div class="col-md-8 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="answer-info-panel">
+                        <div class="answer-info-avatar">
+                            <img src="{{ $answer->user->avatar }}">
+                        </div> 
+                        <div class="answer-content">{{ $answer->user->name }}</div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                            @if(Auth::check())
+                                <a href="#5F"></a>
+                                <form style="margin-top: 30px;" action="{{ route('answer.store',['id' => $data->id]) }}" method="post">
 
+                                    {!! csrf_field() !!}
+
+                                    <div class="form-group {{$errors->has('body')?'has-error':''}}">
+                                     <script id="container" style="height:200px" name="body" type="text/plain"></script>
+                                     @if ($errors->has('body'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('body') }}</strong>
+                                        </span>
+                                     @endif                                    
+
+                                    </div>
+
+
+                                    <button class="btn btn-success pull-right" type="submit">提交答案</button>
+                                </form>
+                            @else
+                                <a style="margin-top: 30px;" href="{{ route('login') }}" class="btn btn-success btn-block">登录提交答案</a>
+                            @endif 
+
+
+                </div>                 
+
+                
+            </div>
+        </div>
 
     </div>
 </div>

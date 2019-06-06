@@ -47585,7 +47585,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     computed: {
         text: function text() {
-            return this.counts;
+            return this.counts + ' 赞';
         }
     },
     methods: {

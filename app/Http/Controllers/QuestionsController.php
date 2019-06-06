@@ -36,6 +36,7 @@ class QuestionsController extends BaseController
         $recommend = true;
         $type = 'recommend';
 
+
         return view('questions.index', compact('questions','recommend','type'));
 
     }
